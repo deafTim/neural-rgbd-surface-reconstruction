@@ -4,8 +4,6 @@
 #include <algorithm>
 #include <list>
 
-#include <stdexcept>
-#include <limits>
 
 #include "tables.h"
 #include "sparsegrid3.h"

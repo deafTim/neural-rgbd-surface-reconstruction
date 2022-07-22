@@ -85,7 +85,7 @@ def get_parser():
     parser.add_argument("--dataset_type", type=str, default='scannet',
                         help='options: llff / blender / deepvoxels / synthetic / scannet') # = scannet
     parser.add_argument("--trainskip", type=int, default=1,
-                        help='will load 1/N images from the training set, useful for large datasets like deepvoxels') # = 1
+                        help='will load 1/N images from the training set, useful for large datasets like deepvoxels') # = 1, 4
     parser.add_argument("--factor", type=int, default=1,
                         help='downsample factor for depth images') # = 1
     parser.add_argument("--sc_factor", type=float, default=1.0,

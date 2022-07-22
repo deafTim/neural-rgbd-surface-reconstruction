@@ -77,7 +77,7 @@ def get_parser():
     parser.add_argument("--mode", type=str, default='density',
                         help='whether the network predicts density or SDF values') # одинаковое = sdf
     parser.add_argument("--trunc", type=float, default=0.05,
-                        help='length of the truncation region in meters') # одинаковое = 0.05
+                        help='length of the truncation region in meters') # одинаковое = 0.05, нам может быть важно, тк наша сцена содержит более маленькие объекты
     parser.add_argument("--render_factor", type=int, default=0,
                         help='downsampling factor to speed up rendering, set 4 or 8 for fast preview') # одинаковое = 1
 
@@ -89,7 +89,7 @@ def get_parser():
     parser.add_argument("--factor", type=int, default=1,
                         help='downsample factor for depth images') # = 1
     parser.add_argument("--sc_factor", type=float, default=1.0,
-                        help='factor by which to scale the camera translation and the depth maps') # разное
+                        help='factor by which to scale the camera translation and the depth maps') # разное, возмонжо приводит все сцены к какому то конкретному размеру 
     parser.add_argument("--translation", action="append", default=None, required=False, type=float,
                         help='translation vector for the camera poses') # разное
     parser.add_argument("--crop", type=int, default=0,

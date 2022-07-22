@@ -59,7 +59,7 @@ def get_parser():
 
     # rendering options
     parser.add_argument("--N_samples", type=int, default=64,
-                        help='number of coarse samples per ray') # разное 
+                        help='number of coarse samples per ray') # chosen such that there is on average one sample for every 1.5 cm of the ray length
     parser.add_argument("--N_importance", type=int, default=0,
                         help='number of additional fine samples per ray') # одиноковое = 16
     parser.add_argument("--perturb", type=float, default=1.,

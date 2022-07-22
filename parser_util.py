@@ -55,7 +55,7 @@ def get_parser():
     parser.add_argument("--optimize_poses", action='store_true',
                         help='optimize a pose refinement for the initial poses')
     parser.add_argument("--use_deformation_field", action='store_true',
-                        help='use a deformation field to account for inaccuracies in intrinsic parameters')
+                        help='use a deformation field to account for inaccuracies in intrinsic parameters') # True для scene
 
     # rendering options
     parser.add_argument("--N_samples", type=int, default=64,

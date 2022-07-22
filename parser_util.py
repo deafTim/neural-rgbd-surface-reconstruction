@@ -59,44 +59,44 @@ def get_parser():
 
     # rendering options
     parser.add_argument("--N_samples", type=int, default=64,
-                        help='number of coarse samples per ray')
+                        help='number of coarse samples per ray') # разное 
     parser.add_argument("--N_importance", type=int, default=0,
-                        help='number of additional fine samples per ray')
+                        help='number of additional fine samples per ray') # одиноковое = 16
     parser.add_argument("--perturb", type=float, default=1.,
-                        help='set to 0. for no jitter, 1. for jitter')
+                        help='set to 0. for no jitter, 1. for jitter') # нет в конфиге
     parser.add_argument("--use_viewdirs", action='store_true',
-                        help='use full 5D input instead of 3D')
+                        help='use full 5D input instead of 3D')  # одинаковое = True
     parser.add_argument("--i_embed", type=int, default=0,
-                        help='set 0 for default positional encoding, -1 for none')
+                        help='set 0 for default positional encoding, -1 for none') # нет в конфиге 
     parser.add_argument("--multires", type=int, default=10,
-                        help='log2 of max freq for positional encoding (3D location)')
+                        help='log2 of max freq for positional encoding (3D location)') # одинаковое = 8
     parser.add_argument("--multires_views", type=int, default=4,
-                        help='log2 of max freq for positional encoding (2D direction)')
+                        help='log2 of max freq for positional encoding (2D direction)') # нет в конфиге
     parser.add_argument("--raw_noise_std", type=float, default=0.,
-                        help='std dev of noise added to regularize sigma_a output, 1e0 recommended')
+                        help='std dev of noise added to regularize sigma_a output, 1e0 recommended') # одинаковое = 0
     parser.add_argument("--mode", type=str, default='density',
-                        help='whether the network predicts density or SDF values')
+                        help='whether the network predicts density or SDF values') # одинаковое = sdf
     parser.add_argument("--trunc", type=float, default=0.05,
-                        help='length of the truncation region in meters')
+                        help='length of the truncation region in meters') # одинаковое = 0.05
     parser.add_argument("--render_factor", type=int, default=0,
-                        help='downsampling factor to speed up rendering, set 4 or 8 for fast preview')
+                        help='downsampling factor to speed up rendering, set 4 or 8 for fast preview') # одинаковое = 1
 
     # dataset options
     parser.add_argument("--dataset_type", type=str, default='scannet',
-                        help='options: llff / blender / deepvoxels / synthetic / scannet')
+                        help='options: llff / blender / deepvoxels / synthetic / scannet') # = scannet
     parser.add_argument("--trainskip", type=int, default=1,
-                        help='will load 1/N images from the training set, useful for large datasets like deepvoxels')
+                        help='will load 1/N images from the training set, useful for large datasets like deepvoxels') # = 1
     parser.add_argument("--factor", type=int, default=1,
-                        help='downsample factor for depth images')
+                        help='downsample factor for depth images') # = 1
     parser.add_argument("--sc_factor", type=float, default=1.0,
-                        help='factor by which to scale the camera translation and the depth maps')
+                        help='factor by which to scale the camera translation and the depth maps') # разное
     parser.add_argument("--translation", action="append", default=None, required=False, type=float,
-                        help='translation vector for the camera poses')
+                        help='translation vector for the camera poses') # разное
     parser.add_argument("--crop", type=int, default=0,
-                        help='number of pixels by which to crop the image edges (e.g. due to undistortion artifacts')
-    parser.add_argument("--near", type=float, default=0.0, help='distance to the near plane')
-    parser.add_argument("--far", type=float, default=1.0, help='distance to the far plane')
-
+                        help='number of pixels by which to crop the image edges (e.g. due to undistortion artifacts') # есть только в "scene"
+    parser.add_argument("--near", type=float, default=0.0, help='distance to the near plane') # = 0
+    parser.add_argument("--far", type=float, default=1.0, help='distance to the far plane') # = 2
+    
     # logging/saving options
     parser.add_argument("--i_print", type=int, default=100,
                         help='frequency of console printout and metric logging')

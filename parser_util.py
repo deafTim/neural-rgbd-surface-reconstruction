@@ -21,13 +21,13 @@ def get_parser():
     parser.add_argument("--netwidth_fine", type=int, default=256,
                         help='channels per layer in fine network')
     parser.add_argument("--N_rand", type=int, default=32 * 32 * 4,
-                        help='batch size (number of random rays per gradient step)')
+                        help='batch size (number of random rays per gradient step)') # разное (нужно подбирать под данные, в коде есть дефолтное значение, для разных сцен разное)
     parser.add_argument("--N_iters", type=int, default=1000000,
-                        help='number of iterations for which to train the network')
+                        help='number of iterations for which to train the network') # = 400_000
     parser.add_argument("--lrate", type=float,
-                        default=5e-4, help='learning rate')
+                        default=5e-4, help='learning rate') # нет в конфиге (берем дефолтный, но оптимальный может быть другой)
     parser.add_argument("--lrate_decay", type=int, default=250,
-                        help='exponential learning rate decay (in 1000s)')
+                        help='exponential learning rate decay (in 1000s)') # нет в конфиге
     parser.add_argument("--chunk", type=int, default=1024 * 32,
                         help='number of rays processed in parallel, decrease if running out of memory')
     parser.add_argument("--netchunk", type=int, default=1024 * 64,
@@ -37,13 +37,13 @@ def get_parser():
     parser.add_argument("--ft_path", type=str, default=None,
                         help='specific weights npy file to reload for coarse network')
     parser.add_argument("--rgb_weight", type=float,
-                        default=1.0, help='weight of the img loss')
+                        default=1.0, help='weight of the img loss') # = 0.1, пока что берем дефолтные, но оптимальные могут быть другие для наших данных
     parser.add_argument("--depth_weight", type=float,
-                        default=1.0, help='weight of the depth loss')
+                        default=1.0, help='weight of the depth loss') # = 0
     parser.add_argument("--fs_weight", type=float,
-                        default=1.0, help='weight of the free-space loss')
+                        default=1.0, help='weight of the free-space loss') # = 10
     parser.add_argument("--trunc_weight", type=float,
-                        default=1.0, help='weight of the truncation loss')
+                        default=1.0, help='weight of the truncation loss') # = 6000
     parser.add_argument("--share_coarse_fine", action='store_true',
                         help='use the same network for both coarse and fine samples')
     parser.add_argument("--rgb_loss_type", type=str, default='l2',
@@ -51,7 +51,7 @@ def get_parser():
     parser.add_argument("--sdf_loss_type", type=str, default='l2',
                         help='which SDF loss to use - l1/l2 are currently supported')
     parser.add_argument("--frame_features", type=int, default=0,
-                        help='number of channels of the learnable per-frame features')
+                        help='number of channels of the learnable per-frame features') # 2 в scene, остальное 0
     parser.add_argument("--optimize_poses", action='store_true',
                         help='optimize a pose refinement for the initial poses')
     parser.add_argument("--use_deformation_field", action='store_true',
